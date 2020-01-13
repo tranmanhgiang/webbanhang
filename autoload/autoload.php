@@ -11,4 +11,7 @@
     // Lấy danh sách sản phẩm mới
     $sqlNew = "SELECT * FROM `product` WHERE 1 ORDER BY `ID` DESC LIMIT 3";
     $productNew = $db->fetchsql($sqlNew); 
+
+    $sqlPay = "SELECT * FROM `product` WHERE 1 ORDER BY `PAY` DESC LIMIT 3";
+    $productPay = $db->fetchsql($sqlPay); 
 ?>

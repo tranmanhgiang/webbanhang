@@ -4,5 +4,8 @@
     require_once __DIR__.'/../../libraries/Function.php';
     $db = new Database;
 
+    if(!isset($_SESSION['admin_id'])){
+        header('location: /tutphp/login/');
+    }    
     define("ROOT", $_SERVER['DOCUMENT_ROOT'] ."/tutphp/public/uploads/");
 ?>

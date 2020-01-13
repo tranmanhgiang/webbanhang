@@ -1,13 +1,13 @@
 </div>
 <div class="container">
     <div class="col-md-4 bottom-content">
-        <a href=""><img src="images/free-shipping.png"></a>
+        <a href=""><img src="<?php echo base_url()?>public/frontend/images/free-shipping.png"></a>
     </div>
     <div class="col-md-4 bottom-content">
-        <a href=""><img src="images/guaranteed.png"></a>
+        <a href=""><img src="<?php echo base_url()?>public/frontend/images/guaranteed.png"></a>
     </div>
     <div class="col-md-4 bottom-content">
-        <a href=""><img src="images/deal.png"></a>
+        <a href=""><img src="<?php echo base_url()?>public/frontend/images/deal.png"></a>
     </div>
 </div>
 <div class="container-pluid">
@@ -130,4 +130,37 @@
             $hidenitem.hide(500);
         })
     })
+
+
+     $(function(){
+        $updatecart = $(".updatecart");
+        $updatecart.click(function(e) {
+            e.preventDefault();
+            $qty = $(this).parents("tr").find(".qty").val();
+
+            $key = $(this).attr("data-key");
+
+            console.log($key);
+            $.ajax({
+                url: 'cap-nhat-gio-hang.php',
+                type: 'GET',
+                data: {'qty': $qty, 'key':$key},
+                success:function(data)
+                {
+                    if (data == 1) 
+                    {
+                        alert('Bạn đã cập nhật giỏ hàng thành công!');
+                        location.href='gio-hang.php';
+                    }
+                    else
+                    {
+                        alert('Xin lỗi! Số lượng bạn mua vượt quá số lượng hàng có trong kho!');
+                        location.href='gio-hang.php';
+                    }
+                }
+            });
+            
+        })
+    }) 
 </script>
+

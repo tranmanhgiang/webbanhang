@@ -9,6 +9,8 @@
     require_once __DIR__.'/layouts/header.php';
 ?>
 <div class="col-md-9 bor">
+    <!-- thong bao loi -->
+    <?php require_once __DIR__."/partials/notification.php";  ?>
     <section class="box-main1">
         <h3 class="title-main" style="text-align: center;"><a href="javascript:void(0)"> Giỏ hàng </a> </h3>
         <!-- Nội dung -->
@@ -33,13 +35,13 @@
                             <img src="<?php echo uploads() ?>product/<?php echo $value['thunbar']; ?>"  height = "80px" width = "80px">
                         </td>
                         <td style = 'width:70px;'>
-                            <input type="number" min = 0 value = "<?php echo $value['qty'] ?>" class = 'form-control'>
+                            <input type="number" min = 0 value = "<?php echo $value['qty'] ?>" class = 'form-control qty' id = "qty">
                         </td>
                         <td><?php echo formatPrice($value['price']); ?></td>
                         <td><?php echo formatPrice($value['price'] * $value['qty']); ?></td>
                         <td>
-                            <a class = "btn btn-xs btn-info" href=""><i class = "fa fa-refresh"></i>Cập nhât</a>
-                            <a class = "btn btn-xs btn-danger" href=""><i class = "fa fa-times"></i>Xóa</a>
+                            <a class = "btn btn-xs btn-info updatecart" data-key = <?php echo $key; ?> href="#"><i class = "fa fa-refresh"></i>Cập nhât</a>
+                            <a class = "btn btn-xs btn-danger" href="remove.php?key=<?php echo $key; ?>"><i class = "fa fa-times"></i>Xóa</a>
                         </td>
                         <?php $sum +=  $value['price'] * $value['qty']; $_SESSION['tongtien'] = $sum;?>
                     </tr>
